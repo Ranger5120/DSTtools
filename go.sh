@@ -202,168 +202,168 @@ function SetAdmin()
 }
 function Listmanage()
 {
-echo "============================================"
-echo "存档目录"
-	cd $HOME
-	ls -l ./.klei/DoNotStarveTogether |awk '/^d/ {print $NF}'
-	echo "请输入要管理Mod的存档代码"
-	read filenumber
-while :
-do
 	echo "============================================"
-	echo "[1]设置管理员 [2]管理黑名单 [3]管理白名单"
-	read list1
-	case $list1 in
-		1)SetAdmin
-		break;;
-		2)SetBlack
-		break;;
-		3)SetWhite
-		break;;
-	esac
-done
+	echo "存档目录"
+		cd $HOME
+		ls -l ./.klei/DoNotStarveTogether |awk '/^d/ {print $NF}'
+		echo "请输入要管理Mod的存档代码"
+		read filenumber
+	while :
+	do
+		echo "============================================"
+		echo "[1]设置管理员 [2]管理黑名单 [3]管理白名单"
+		read list1
+		case $list1 in
+			1)SetAdmin
+			break;;
+			2)SetBlack
+			break;;
+			3)SetWhite
+			break;;
+		esac
+	done
 }
 function RemMod()
 {
-while :
-do
-	echo "============================================"
-	echo "请输入要移除的modID（返回主菜单输入0）"
-	read ID1
-	case $ID1 in
-		0)break;;
-		*)
-	if [ -d ./.klei/DoNotStarveTogether/$filenumber/Master ]
-	then
-		cd ./.klei/DoNotStarveTogether/$filenumber/Master
-		if [[ `grep "$ID1" modoverrides.lua` ]]
-		then 
-			sed -i "/$ID1/d" modoverrides.lua
-			cd $HOME
-			echo "地上世界Mod移除完成"
+	while :
+	do
+		echo "============================================"
+		echo "请输入要移除的modID（返回主菜单输入0）"
+		read ID1
+		case $ID1 in
+			0)break;;
+			*)
+		if [ -d ./.klei/DoNotStarveTogether/$filenumber/Master ]
+		then
+			cd ./.klei/DoNotStarveTogether/$filenumber/Master
+			if [[ `grep "$ID1" modoverrides.lua` ]]
+			then 
+				sed -i "/$ID1/d" modoverrides.lua
+				cd $HOME
+				echo "地上世界Mod移除完成"
+			else
+				echo "地上世界该Mod不存在"
+			fi
 		else
-			echo "地上世界该Mod不存在"
+			echo "该存档没有地上世界"
 		fi
-	else
-		echo "该存档没有地上世界"
-	fi
-	cd $HOME
-	if [ -d ./.klei/DoNotStarveTogether/$filenumber/Caves ]
-	then
-		cd ./.klei/DoNotStarveTogether/$filenumber/Caves
-		if [[ `grep "$ID1" modoverrides.lua` ]]
-		then 
-			sed -i "/$ID1/d" modoverrides.lua
-			cd $HOME
-			echo "地下世界Mod移除完成"
+		cd $HOME
+		if [ -d ./.klei/DoNotStarveTogether/$filenumber/Caves ]
+		then
+			cd ./.klei/DoNotStarveTogether/$filenumber/Caves
+			if [[ `grep "$ID1" modoverrides.lua` ]]
+			then 
+				sed -i "/$ID1/d" modoverrides.lua
+				cd $HOME
+				echo "地下世界Mod移除完成"
+			else
+				echo "地下世界该Mod不存在"
+			fi
 		else
-			echo "地下世界该Mod不存在"
+			echo "该存档没有地下世界"
 		fi
-	else
-		echo "该存档没有地下世界"
-	fi
-	esac
-done
-Main
+		esac
+	done
+	Main
 }
 function AddMod()
 {
-while :
-do
-	echo "============================================"
-	echo "请输入要添加的modID（返回主菜单输入0）"
-    read ID1
-	case $ID1 in
-		0)break;;
-		*)
-			if [ -d ./.klei/DoNotStarveTogether/$filenumber/Master ]
-			then
-				cd ./.klei/DoNotStarveTogether/$filenumber/Master
-				if [[ ! `grep "$ID1" "modoverrides.lua"` ]]
-				then 
-					sed -i '$d' modoverrides.lua
-					echo "[\"workshop-$ID1\"]={ configuration_options={  }, enabled=true }," >> modoverrides.lua
-					echo "}" >> modoverrides.lua
-					cd $HOME
-					mod3=1
-					echo "地上世界Mod添加完成"
+	while :
+	do
+		echo "============================================"
+		echo "请输入要添加的modID（返回主菜单输入0）"
+		read ID1
+		case $ID1 in
+			0)break;;
+			*)
+				if [ -d ./.klei/DoNotStarveTogether/$filenumber/Master ]
+				then
+					cd ./.klei/DoNotStarveTogether/$filenumber/Master
+					if [[ ! `grep "$ID1" "modoverrides.lua"` ]]
+					then 
+						sed -i '$d' modoverrides.lua
+						echo "[\"workshop-$ID1\"]={ configuration_options={  }, enabled=true }," >> modoverrides.lua
+						echo "}" >> modoverrides.lua
+						cd $HOME
+						mod3=1
+						echo "地上世界Mod添加完成"
+					else
+						echo "地上世界该Mod已存在"
+					fi
 				else
-					echo "地上世界该Mod已存在"
+					echo "该存档没有地上世界"
+					mod3=0
 				fi
-			else
-				echo "该存档没有地上世界"
-				mod3=0
-			fi
-			cd $HOME 
-			if [ -d ./.klei/DoNotStarveTogether/$filenumber/Caves ]
-			then
-				cd ./.klei/DoNotStarveTogether/$filenumber/Caves
-				if [[ ! `grep "$ID1" modoverrides.lua` ]]
-				then 
-					sed -i '$d' modoverrides.lua
-					echo "[\"workshop-$ID1\"]={ configuration_options={  }, enabled=true }," >> modoverrides.lua
-					echo "}" >> modoverrides.lua
-					cd $HOME
-					mod4=$[mod3+1]
-					echo "地下世界Mod添加完成"
+				cd $HOME 
+				if [ -d ./.klei/DoNotStarveTogether/$filenumber/Caves ]
+				then
+					cd ./.klei/DoNotStarveTogether/$filenumber/Caves
+					if [[ ! `grep "$ID1" modoverrides.lua` ]]
+					then 
+						sed -i '$d' modoverrides.lua
+						echo "[\"workshop-$ID1\"]={ configuration_options={  }, enabled=true }," >> modoverrides.lua
+						echo "}" >> modoverrides.lua
+						cd $HOME
+						mod4=$[mod3+1]
+						echo "地下世界Mod添加完成"
+					else
+						echo "地下世界该Mod已存在"
+					fi
 				else
-					echo "地下世界该Mod已存在"
+					echo "该存档没有地下世界"
+					mod4=$[mod3+0]
 				fi
-			else
-				echo "该存档没有地下世界"
-				mod4=$[mod3+0]
-			fi
-			cd "./Steam/steamapps/common/Don't Starve Together Dedicated Server/mods"
-				if [[ ! `grep "$ID1" dedicated_server_mods_setup.lua` ]]
-				then        
-					echo "ServerModSetup(\"$ID1\")" >> dedicated_server_mods_setup.lua
-				fi
-			cd "$HOME"
-			case mod4 in
-				0)  echo "该存档不存在"
-				;;
-				*)
-				;;
-			esac
-			echo "$mod4"
-	esac
-done
-Main
+				cd "./Steam/steamapps/common/Don't Starve Together Dedicated Server/mods"
+					if [[ ! `grep "$ID1" dedicated_server_mods_setup.lua` ]]
+					then        
+						echo "ServerModSetup(\"$ID1\")" >> dedicated_server_mods_setup.lua
+					fi
+				cd "$HOME"
+				case mod4 in
+					0)  echo "该存档不存在"
+					;;
+					*)
+					;;
+				esac
+				echo "$mod4"
+		esac
+	done
+	Main
 }
 function Modmanage()
 {
-echo "============================================"
-echo "存档目录"
-	cd $HOME
-	ls -l ./.klei/DoNotStarveTogether |awk '/^d/ {print $NF}'
-	echo "请输入要管理Mod的存档代码"
-	read filenumber
-while :
-do
-echo "============================================"
-echo "[1]添加Mod [2]移除Mod [3]清空MOD（慎用）"
-read mod1
-	case $mod1 in
-		1)AddMod
-		break;;
-		2)RemMod
-		break;;
-		3)echo "请再次输入要清空Mod的存档代码"
-		  read filenumber
-		  if [ -d ./.klei/DoNotStarveTogether/$filenumber/Master ]
-		  then 
-		  echo "return {
-				 }" > ./.klei/DoNotStarveTogether/$filenumber/Master/modoverrides.lua
-		  fi
-		  if [ -d ./.klei/DoNotStarveTogether/$filenumber/Caves ]
-		  then 
-		  echo "return {
-				 }" > ./.klei/DoNotStarveTogether/$filenumber/Caves/modoverrides.lua
-		  fi
-		  echo "Mod已清空"
-		break;;
-	esac	
-done
+	echo "============================================"
+	echo "存档目录"
+		cd $HOME
+		ls -l ./.klei/DoNotStarveTogether |awk '/^d/ {print $NF}'
+		echo "请输入要管理Mod的存档代码"
+		read filenumber
+	while :
+	do
+	echo "============================================"
+	echo "[1]添加Mod [2]移除Mod [3]清空MOD（慎用）"
+	read mod1
+		case $mod1 in
+			1)AddMod
+			break;;
+			2)RemMod
+			break;;
+			3)echo "请再次输入要清空Mod的存档代码"
+			read filenumber
+			if [ -d ./.klei/DoNotStarveTogether/$filenumber/Master ]
+			then 
+			echo "return {
+					}" > ./.klei/DoNotStarveTogether/$filenumber/Master/modoverrides.lua
+			fi
+			if [ -d ./.klei/DoNotStarveTogether/$filenumber/Caves ]
+			then 
+			echo "return {
+					}" > ./.klei/DoNotStarveTogether/$filenumber/Caves/modoverrides.lua
+			fi
+			echo "Mod已清空"
+			break;;
+		esac	
+	done
 }
 function Delete()
 {
