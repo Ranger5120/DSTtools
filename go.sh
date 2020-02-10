@@ -509,330 +509,330 @@ function StartMaster()
 function Serversetting2()
 {
 
-while :
-do
-    echo "请选择模式：1.无尽 2.生存 3.荒野"
-    read gamemode1
-    case $gamemode1 in
-        1)
-        gamemode1="endless"
-        break;;
-        2)
-        gamemode1="survival"
-        break;;
-        3)
-        gamemode1="wilderness"
-        break;;
-    esac
-done
+	while :
+	do
+		echo "请选择模式：1.无尽 2.生存 3.荒野"
+		read gamemode1
+		case $gamemode1 in
+			1)
+			gamemode1="endless"
+			break;;
+			2)
+			gamemode1="survival"
+			break;;
+			3)
+			gamemode1="wilderness"
+			break;;
+		esac
+	done
 
-echo "请输入最大玩家数量："
-read players
+	echo "请输入最大玩家数量："
+	read players
 
-while :
-do
-    echo "是否开启pvp？[y/n]"
-    read ifpvp
-    case $ifpvp in
-        y)
-        ifpvp="true"
-        break;;
-        n)
-        ifpvp="false"
-        break;;
-    esac
-done
+	while :
+	do
+		echo "是否开启pvp？[y/n]"
+		read ifpvp
+		case $ifpvp in
+			y)
+			ifpvp="true"
+			break;;
+			n)
+			ifpvp="false"
+			break;;
+		esac
+	done
 
-while :
-do
-    echo "是否开启暂停？[y/n]"
-    read ifpause
-    case $ifpause in
-        y)
-        ifpause1="true"
-        break;;
-        n)
-        ifpause1="false"
-        break;;
-    esac
-done
+	while :
+	do
+		echo "是否开启暂停？[y/n]"
+		read ifpause
+		case $ifpause in
+			y)
+			ifpause1="true"
+			break;;
+			n)
+			ifpause1="false"
+			break;;
+		esac
+	done
 
-while :
-do
-    echo "请选择游戏难度：1.休闲 2.合作 3.竞赛 4.疯狂"
-    read intention
-    case $intention in
-        1)
-        intention1=social
-        break;;
-        2)
-        intention1=cooperative
-        break;;
-        3)
-        intention1=competitive
-        break;;
-        4)
-        intention1=madness
-        break;;
-    esac
-done
+	while :
+	do
+		echo "请选择游戏难度：1.休闲 2.合作 3.竞赛 4.疯狂"
+		read intention
+		case $intention in
+			1)
+			intention1=social
+			break;;
+			2)
+			intention1=cooperative
+			break;;
+			3)
+			intention1=competitive
+			break;;
+			4)
+			intention1=madness
+			break;;
+		esac
+	done
 
-while :
-do
-    echo "控制台是否打开？[y/n]"
-    read console
-    case $console in
-        y)
-        console1="true"
-        break;;
-        n)
-        console1="false"
-        break;;
-    esac
-done
-echo "请输入你的饥荒令牌："
-read token
+	while :
+	do
+		echo "控制台是否打开？[y/n]"
+		read console
+		case $console in
+			y)
+			console1="true"
+			break;;
+			n)
+			console1="false"
+			break;;
+		esac
+	done
+	echo "请输入你的饥荒令牌："
+	read token
 
-echo "$token" > ./.klei/DoNotStarveTogether/$filenumber/cluster_token.txt
+	echo "$token" > ./.klei/DoNotStarveTogether/$filenumber/cluster_token.txt
 
-echo "请输入服务器名字："
-read servername
-	
-echo "请输入服务器介绍：PS：若无请按Enter键"
-read description
+	echo "请输入服务器名字："
+	read servername
+		
+	echo "请输入服务器介绍：PS：若无请按Enter键"
+	read description
 
-echo "请输入服务器密码：PS：若无请按Enter键"
-read password
+	echo "请输入服务器密码：PS：若无请按Enter键"
+	read password
 
-echo "请输入地上世界服务器外网IP:"
-read masterip
+	echo "请输入地上世界服务器外网IP:"
+	read masterip
 
- echo "[GAMEPLAY]
-game_mode = $gamemode1
-max_players = $players
-pvp = $ifpvp
-pause_when_empty = $ifpause1
-
-
-[NETWORK]
-cluster_description = $description
-cluster_name = $servername
-cluster_intention = $intention1
-cluster_password = $password
+	echo "[GAMEPLAY]
+	game_mode = $gamemode1
+	max_players = $players
+	pvp = $ifpvp
+	pause_when_empty = $ifpause1
 
 
-[MISC]
-console_enabled = $console1
+	[NETWORK]
+	cluster_description = $description
+	cluster_name = $servername
+	cluster_intention = $intention1
+	cluster_password = $password
 
 
-[SHARD]
-shard_enabled = true
-bind_ip = 0.0.0.0
-master_ip = $masterip
-master_port = 10889
-cluster_key = supersecretkey" > ./.klei/DoNotStarveTogether/$filenumber/cluster.ini
-clear
-echo "服务器配置完成！"
+	[MISC]
+	console_enabled = $console1
+
+
+	[SHARD]
+	shard_enabled = true
+	bind_ip = 0.0.0.0
+	master_ip = $masterip
+	master_port = 10889
+	cluster_key = supersecretkey" > ./.klei/DoNotStarveTogether/$filenumber/cluster.ini
+	clear
+	echo "服务器配置完成！"
 }
 function Serversetting1()
 {
-while :
-do
-    echo "请选择模式：1.无尽 2.生存 3.荒野"
-    read gamemode
-    case $gamemode in
-        1)
-        gamemode1="endless"
-        break;;
-        2)
-        gamemode1="survival"
-        break;;
-        3)
-        gamemode1="wilderness"
-        break;;
-    esac
-done
+	while :
+	do
+		echo "请选择模式：1.无尽 2.生存 3.荒野"
+		read gamemode
+		case $gamemode in
+			1)
+			gamemode1="endless"
+			break;;
+			2)
+			gamemode1="survival"
+			break;;
+			3)
+			gamemode1="wilderness"
+			break;;
+		esac
+	done
 
-echo "请输入最大玩家数量："
-read players
+	echo "请输入最大玩家数量："
+	read players
 
-while :
-do
-    echo "是否开启pvp？[y/n]"
-    read ifpvp
-    case $ifpvp in
-        y)
-        ifpvp="true"
-        break;;
-        n)
-        ifpvp="false"
-        break;;
-    esac
-done
+	while :
+	do
+		echo "是否开启pvp？[y/n]"
+		read ifpvp
+		case $ifpvp in
+			y)
+			ifpvp="true"
+			break;;
+			n)
+			ifpvp="false"
+			break;;
+		esac
+	done
 
-while :
-do
-    echo "是否开启暂停？[y/n]"
-    read ifpause
-    case $ifpause in
-        y)
-        ifpause1="true"
-        break;;
-        n)
-        ifpause1="false"
-        break;;
-    esac
-done
+	while :
+	do
+		echo "是否开启暂停？[y/n]"
+		read ifpause
+		case $ifpause in
+			y)
+			ifpause1="true"
+			break;;
+			n)
+			ifpause1="false"
+			break;;
+		esac
+	done
 
-while :
-do
-    echo "请选择游戏难度：1.休闲 2.合作 3.竞赛 4.疯狂"
-    read intention
-    case $intention in
-        1)
-        intention1=social
-        break;;
-        2)
-        intention1=cooperative
-        break;;
-        3)
-        intention1=competitive
-        break;;
-        4)
-        intention1=madness
-        break;;
-    esac
-done
+	while :
+	do
+		echo "请选择游戏难度：1.休闲 2.合作 3.竞赛 4.疯狂"
+		read intention
+		case $intention in
+			1)
+			intention1=social
+			break;;
+			2)
+			intention1=cooperative
+			break;;
+			3)
+			intention1=competitive
+			break;;
+			4)
+			intention1=madness
+			break;;
+		esac
+	done
 
-while :
-do
-    echo "控制台是否打开？[y/n]"
-    read console
-    case $console in
-        y)
-        console1="true"
-        break;;
-        n)
-        console1="false"
-        break;;
-    esac
-done
-echo "请输入你的饥荒令牌："
-read token
+	while :
+	do
+		echo "控制台是否打开？[y/n]"
+		read console
+		case $console in
+			y)
+			console1="true"
+			break;;
+			n)
+			console1="false"
+			break;;
+		esac
+	done
+	echo "请输入你的饥荒令牌："
+	read token
 
-echo "$token" > ./.klei/DoNotStarveTogether/$filenumber/cluster_token.txt
+	echo "$token" > ./.klei/DoNotStarveTogether/$filenumber/cluster_token.txt
 
-echo "请输入服务器名字："
-read servername
-	
-echo "请输入服务器介绍：PS：若无请按Enter键"
-read description
+	echo "请输入服务器名字："
+	read servername
+		
+	echo "请输入服务器介绍：PS：若无请按Enter键"
+	read description
 
-echo "请输入服务器密码：PS：若无请按Enter键"
-read password
+	echo "请输入服务器密码：PS：若无请按Enter键"
+	read password
 
- echo "[GAMEPLAY]
-game_mode = $gamemode1
-max_players = $players
-pvp = $ifpvp
-pause_when_empty = $ifpause1
-
-
-[NETWORK]
-cluster_description = $description
-cluster_name = $servername
-cluster_intention = $intention1
-cluster_password = $password
+	echo "[GAMEPLAY]
+	game_mode = $gamemode1
+	max_players = $players
+	pvp = $ifpvp
+	pause_when_empty = $ifpause1
 
 
-[MISC]
-console_enabled = $console1
+	[NETWORK]
+	cluster_description = $description
+	cluster_name = $servername
+	cluster_intention = $intention1
+	cluster_password = $password
 
 
-[SHARD]
-shard_enabled = true
-bind_ip = 127.0.0.1
-master_ip = 127.0.0.1
-master_port = 10889
-cluster_key = supersecretkey" > ./.klei/DoNotStarveTogether/$filenumber/cluster.ini
-clear
-echo "服务器配置完成！"
+	[MISC]
+	console_enabled = $console1
+
+
+	[SHARD]
+	shard_enabled = true
+	bind_ip = 127.0.0.1
+	master_ip = 127.0.0.1
+	master_port = 10889
+	cluster_key = supersecretkey" > ./.klei/DoNotStarveTogether/$filenumber/cluster.ini
+	clear
+	echo "服务器配置完成！"
 }
 function CreatCavesini()
 {
-echo "[NETWORK]
-server_port = 11001
+	echo "[NETWORK]
+	server_port = 11001
 
 
-[SHARD]
-is_master = false
-name = Caves
+	[SHARD]
+	is_master = false
+	name = Caves
 
 
-[STEAM]
-master_server_port = 27019
-authentication_port = 8769" > ./.klei/DoNotStarveTogether/$filenumber/Caves/server.ini
-echo "return {
-override_enabled = true,
-preset = \"DST_CAVE\",
-}" > ./.klei/DoNotStarveTogether/$filenumber/Caves/worldgenoverride.lua
-echo "return {
-}" >> "./.klei/DoNotStarveTogether/$filenumber/Caves/modoverrides.lua"
+	[STEAM]
+	master_server_port = 27019
+	authentication_port = 8769" > ./.klei/DoNotStarveTogether/$filenumber/Caves/server.ini
+	echo "return {
+	override_enabled = true,
+	preset = \"DST_CAVE\",
+	}" > ./.klei/DoNotStarveTogether/$filenumber/Caves/worldgenoverride.lua
+	echo "return {
+	}" >> "./.klei/DoNotStarveTogether/$filenumber/Caves/modoverrides.lua"
 }
 function CreatMasterini()
 {
-echo "[NETWORK]
-server_port = 11000
+	echo "[NETWORK]
+	server_port = 11000
 
-[SHARD]
-is_master = true
+	[SHARD]
+	is_master = true
 
-[STEAM]
-master_server_port = 27018
-authentication_port = 8768" > ./.klei/DoNotStarveTogether/$filenumber/Master/server.ini
-echo "return {
-}" >> "./.klei/DoNotStarveTogether/$filenumber/Master/modoverrides.lua"
+	[STEAM]
+	master_server_port = 27018
+	authentication_port = 8768" > ./.klei/DoNotStarveTogether/$filenumber/Master/server.ini
+	echo "return {
+	}" >> "./.klei/DoNotStarveTogether/$filenumber/Master/modoverrides.lua"
 }
 function Cavesfile()
 {
-echo "============================================"
-echo "请输入存档代码"
-read filenumber
-	if [ ! -d "./klei/DoNotStarveTogether/$filenumber" ]
-	then 
-		mkdir -p ./.klei/DoNotStarveTogether/$filenumber/Caves
-	fi
-CreatCavesini
-Serversetting2
-StartCaves
+	echo "============================================"
+	echo "请输入存档代码"
+	read filenumber
+		if [ ! -d "./klei/DoNotStarveTogether/$filenumber" ]
+		then 
+			mkdir -p ./.klei/DoNotStarveTogether/$filenumber/Caves
+		fi
+	CreatCavesini
+	Serversetting2
+	StartCaves
 }
 function Masterfile()
 {
-echo "============================================"
-echo "请输入存档代码"
-read filenumber
-	if [ ! -d "./klei/DoNotStarveTogether/$filenumber" ]
-	then 
-		mkdir -p ./.klei/DoNotStarveTogether/$filenumber/Master
-	fi
-CreatMasterini
-Serversetting2
-StartMaster
+	echo "============================================"
+	echo "请输入存档代码"
+	read filenumber
+		if [ ! -d "./klei/DoNotStarveTogether/$filenumber" ]
+		then 
+			mkdir -p ./.klei/DoNotStarveTogether/$filenumber/Master
+		fi
+	CreatMasterini
+	Serversetting2
+	StartMaster
 }
 function MasterCaves()
 {
-echo "============================================"
-while :
-do
-echo "[1]地上 [2]地下"
-read masterCaves1
-	case $masterCaves1 in
-		1)Masterfile
-		break;;
-		2)Cavesfile
-		break;;
-	esac
-done
+	echo "============================================"
+	while :
+	do
+	echo "[1]地上 [2]地下"
+	read masterCaves1
+		case $masterCaves1 in
+			1)Masterfile
+			break;;
+			2)Cavesfile
+			break;;
+		esac
+	done
 }
 function Filechose()
 { 
@@ -865,66 +865,66 @@ function Filechose()
 }
 function Newfile()
 { 
-mkdir -p ./.klei/DoNotStarveTogether/$filenumber/Master
-mkdir -p ./.klei/DoNotStarveTogether/$filenumber/Caves
-Serversetting1
-CreatMasterini
-CreatCavesini
-StartMaster
-StartCaves
+	mkdir -p ./.klei/DoNotStarveTogether/$filenumber/Master
+	mkdir -p ./.klei/DoNotStarveTogether/$filenumber/Caves
+	Serversetting1
+	CreatMasterini
+	CreatCavesini
+	StartMaster
+	StartCaves
 }
 function Startserver()
 {
-echo "============================================"
-echo "存档目录"
-ls -l ./.klei/DoNotStarveTogether |awk '/^d/ {print $NF}'
-echo "============================================"
-echo "请输入存档代码"
-read filenumber
-	if [ -d "./.klei/DoNotStarveTogether/$filenumber" ]
-	then 
-		Filechose
-	else
-		echo "存档不存在，是否新建？[y/n]" 
-		read newfile2
-		while :
-		do
-			case $newfile2 in
-				y)Modechose
-				break;;
-				n)Main
-				break;;
-			esac
-		done
-	fi
+	echo "============================================"
+	echo "存档目录"
+	ls -l ./.klei/DoNotStarveTogether |awk '/^d/ {print $NF}'
+	echo "============================================"
+	echo "请输入存档代码"
+	read filenumber
+		if [ -d "./.klei/DoNotStarveTogether/$filenumber" ]
+		then 
+			Filechose
+		else
+			echo "存档不存在，是否新建？[y/n]" 
+			read newfile2
+			while :
+			do
+				case $newfile2 in
+					y)Modechose
+					break;;
+					n)Main
+					break;;
+				esac
+			done
+		fi
 }
 function CloseServer()
 {
-echo "============================================"
-screen -ls
-echo "============================================"
-echo "输入要切换的PID"
-echo "PS:回车后会进入地上或地下的运行界面"
-echo "   手动输入c_shutdown(true)回车保存退出"
-echo "   进入后不想关闭请按ctrl+a+d"
-read pid1
-screen -r $pid1
+	echo "============================================"
+	screen -ls
+	echo "============================================"
+	echo "输入要切换的PID"
+	echo "PS:回车后会进入地上或地下的运行界面"
+	echo "   手动输入c_shutdown(true)回车保存退出"
+	echo "   进入后不想关闭请按ctrl+a+d"
+	read pid1
+	screen -r $pid1
 
 }
 function Modechose()
 {
-echo "============================================"
-while :
-do
-echo "[1]单服务器搭建 [2]双服务器搭建 "
-	read servermode
-	case $servermode in
-		1)Newfile
-		break;;
-		2)MasterCaves
-		break;;
-	esac
-done	
+	echo "============================================"
+	while :
+	do
+	echo "[1]单服务器搭建 [2]双服务器搭建 "
+		read servermode
+		case $servermode in
+			1)Newfile
+			break;;
+			2)MasterCaves
+			break;;
+		esac
+	done	
 }
 function Gameupdate()
 {
@@ -944,44 +944,45 @@ function Library()
 	 apt-get -y install libcurl4-gnutls-dev:i386
 	 apt-get -y install htop
 }
+
 function Prepare()
 {
-if [ ! -d "./steamcmd" ]
-then
-Library
-mkdir ./steamcmd
-cd ./steamcmd
-wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
-tar -xvzf steamcmd_linux.tar.gz
-rm -f steamcmd_linux.tar.gz
-./steamcmd.sh +login anonymous +app_update 343050 validate +quit
-fi
-cd "$HOME"
+	if [ ! -d "./steamcmd" ]
+	then
+	Library
+	mkdir ./steamcmd
+	cd ./steamcmd
+	wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
+	tar -xvzf steamcmd_linux.tar.gz
+	rm -f steamcmd_linux.tar.gz
+	./steamcmd.sh +login anonymous +app_update 343050 validate +quit
+	fi
+	cd "$HOME"
 }
 function Main()
 {
-echo "============================================"
-while :
-do
-echo "[1]更新服务器 [2]启动服务器 [3]关闭服务器"
-echo "[4]管理存档   [5]管理MOD    [6]管理特殊名单"
-echo 
-	read main1
-		case $main1 in
-			1)Gameupdate
-			break;;
-			2)Startserver
-			break;;
-			3)CloseServer
-			break;;
-			4)Filemanage
-			break;;
-			5)Modmanage
-			break;;
-			6)Listmanage
-			break;;
-		esac
-done
+	echo "============================================"
+	while :
+	do
+	echo "[1]更新服务器 [2]启动服务器 [3]关闭服务器"
+	echo "[4]管理存档   [5]管理MOD    [6]管理特殊名单"
+	echo 
+		read main1
+			case $main1 in
+				1)Gameupdate
+				break;;
+				2)Startserver
+				break;;
+				3)CloseServer
+				break;;
+				4)Filemanage
+				break;;
+				5)Modmanage
+				break;;
+				6)Listmanage
+				break;;
+			esac
+	done
 }
 
 echo "欢迎使用"
